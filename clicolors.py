@@ -11,7 +11,9 @@ class CLI:
         Returns the escape code for a 8/16 color id.
         """
         return f"\033[{value}m"
-        
+
+
+#region CLI Names
 # Resets everything
 CLI.RESET = '\033[0m'
 
@@ -74,6 +76,7 @@ CLI.CLEAR_LINE = '\033[K'
 CLI.CLEAR = '\033[2J'
 CLI.SAVE = '\033[s'
 CLI.RESTORE = '\033[u'
+#endregion
 
 # 256 Colors
 class CLI256:
@@ -628,3 +631,19 @@ CLI256.BG_Grey89 = '\033[48;5;254m'
 CLI256.BG_Grey93 = '\033[48;5;255m'
 #endregion
 
+# Truecolor
+# https://gist.github.com/XVilka/8346728
+class CLIT:
+    @staticmethod
+    def fg(r: int, g:int, b:int) -> str:
+        """
+        Returns the foreground escape code for an rgb truecolor.
+        """
+        return f"\033[38;2;{r};{g};{b}m"
+
+    @staticmethod
+    def bg(r: int, g:int, b:int) -> str:
+        """
+        Returns the background escape code for an rgb truecolor.
+        """
+        return f"\033[48;2;{r};{g};{b}m"

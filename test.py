@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
-from clicolors import CLI, CLI256
+import colorsys
+
+from clicolors import CLI, CLI256, CLIT
 
 # Test modifiers
 print()
@@ -54,6 +56,7 @@ for bi, b in background:
         line += f"{f}{b}LoL{CLI.RESET}"
     print(line)
 
+# Test 256 colors
 print()
 c256 = [(i, CLI256.fg(i)) for i in range(0, 256)]
 for i, code in c256:
@@ -85,4 +88,24 @@ for i in range(16,22):
     print(CLI256.bg(i) + " ", end='')
 for i in range(21,15,-1):
     print(CLI256.bg(i) + " ", end='')
+print(f"{CLI.RESET}")
+
+# Test truecolors
+print()
+for i in range(0, 256, 4):
+    print(CLIT.bg(i, 0, 0), " ", end='')
+print(f"{CLI.RESET}")
+for i in range(0, 256, 4):
+    print(CLIT.bg(0, i, 0), " ", end='')
+print(f"{CLI.RESET}")
+for i in range(0, 256, 4):
+    print(CLIT.bg(0, 0, i), " ", end='')
+print(f"{CLI.RESET}")
+
+print()
+for i in range(4096):
+    r,g,b = colorsys.hsv_to_rgb(i / 4096.0 * 0.85, 1.0, 1.0)
+    print(CLIT.bg(int(r * 255), int(g * 255), int(b * 255)), " ", end='')
+    if i % 64 == 63:
+        print(f"{CLI.RESET}")
 print(f"{CLI.RESET}")
