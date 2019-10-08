@@ -92,20 +92,18 @@ print(f"{CLI.RESET}")
 
 # Test truecolors
 print()
-for i in range(0, 256, 4):
-    print(CLIT.bg(i, 0, 0), " ", end='')
+print(''.join(f"{CLIT.bg(i, 0, 0)} " for i in range(0, 256, 2)), end='')
 print(f"{CLI.RESET}")
-for i in range(0, 256, 4):
-    print(CLIT.bg(0, i, 0), " ", end='')
+print(''.join(f"{CLIT.bg(0, i, 0)} " for i in range(0, 256, 2)), end='')
 print(f"{CLI.RESET}")
-for i in range(0, 256, 4):
-    print(CLIT.bg(0, 0, i), " ", end='')
+print(''.join(f"{CLIT.bg(0, 0, i)} " for i in range(0, 256, 2)), end='')
 print(f"{CLI.RESET}")
 
 print()
+line = ""
 for i in range(4096):
     r,g,b = colorsys.hsv_to_rgb(i / 4096.0 * 0.85, 1.0, 1.0)
-    print(CLIT.bg(int(r * 255), int(g * 255), int(b * 255)), " ", end='')
-    if i % 64 == 63:
-        print(f"{CLI.RESET}")
-print(f"{CLI.RESET}")
+    line += CLIT.bg(int(r * 255), int(g * 255), int(b * 255)) + " "
+    if i % 128 == 127:
+        line += CLI.RESET + "\n"
+print(f"{line}{CLI.RESET}")
