@@ -30,7 +30,7 @@ for disp, set_a, _ in modifiers:
 
 # Test clear
 print()
-print(f"SHOULDNT SEE ME SHOULDNT SEE ME SHOU  SHOULDN'T SEE ME \r{CLI.CLEAR_LINE}Line clear test. Should only see me.")
+print(f"{' ' * 46}SHOULDN'T SEE ME \r{CLI.CLEAR_LINE}Line clear test. Should see nothing after me.")
 
 # Test 8/16 colors
 print()
