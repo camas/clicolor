@@ -32,10 +32,10 @@ print(f"SHOULDNT SEE ME SHOULDNT SEE ME SHOU  SHOULDN'T SEE ME \r{CLI.CLEAR_LINE
 
 # Test 8/16 colors
 print()
-foreground = [(i, f'\033[{i}m') for i in range(30, 38)]
-foreground.extend((i, f'\033[{i}m') for i in range(90, 98))
-background = [(i, f'\033[{i}m') for i in range(40, 48)]
-background.extend((i, f'\033[{i}m') for i in range(100, 108))
+foreground = [(i, CLI.from_val(i)) for i in range(30, 38)]
+foreground.extend((i, CLI.from_val(i)) for i in range(90, 98))
+background = [(i, CLI.from_val(i)) for i in range(40, 48)]
+background.extend((i, CLI.from_val(i)) for i in range(100, 108))
 for i, code in foreground:
     print(f"{code}{i:<3}{CLI.RESET}", end='')
 print()
@@ -55,17 +55,34 @@ for bi, b in background:
     print(line)
 
 print()
-c256 = [(i, f'\033[38;5;{i}m') for i in range(0, 256)]
+c256 = [(i, CLI256.fg(i)) for i in range(0, 256)]
 for i, code in c256:
     s = f"{code}{i:<3}"
-    if i % 16 == 15:
+    if i % 6 == 3:
         s += f"{CLI.RESET}\n"
     print(s, end='')
 
 print()
-c256b = [(i, f'\033[48;5;{i}m') for i in range(0, 256)]
+c256b = [(i, CLI256.bg(i)) for i in range(0, 256)]
 for i, code in c256b:
     s = f"{code}{i:<3}"
-    if i % 16 == 15:
+    if i % 6 == 3:
         s += f"{CLI.RESET}\n"
     print(s, end='')
+
+print()
+for i in [16, 52, 88, 124, 160, 196]:
+    print(CLI256.bg(i) + " ", end='')
+for i in reversed([16, 52, 88, 124, 160, 196]):
+    print(CLI256.bg(i) + " ", end='')
+print(f"{CLI.RESET}")
+for i in [16, 22, 28, 34, 40, 46]:
+    print(CLI256.bg(i) + " ", end='')
+for i in reversed([16, 22, 28, 34, 40, 46]):
+    print(CLI256.bg(i) + " ", end='')
+print(f"{CLI.RESET}")
+for i in range(16,22):
+    print(CLI256.bg(i) + " ", end='')
+for i in range(21,15,-1):
+    print(CLI256.bg(i) + " ", end='')
+print(f"{CLI.RESET}")

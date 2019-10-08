@@ -5,8 +5,13 @@
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
 # https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 class CLI: 
-    pass
-
+    @staticmethod
+    def from_val(value: int) -> str:
+        """
+        Returns the escape code for a 8/16 color id.
+        """
+        return f"\033[{value}m"
+        
 # Resets everything
 CLI.RESET = '\033[0m'
 
