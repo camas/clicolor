@@ -30,7 +30,8 @@ for disp, set_a, _ in modifiers:
 
 # Test clear
 print()
-print(f"{' ' * 46}SHOULDN'T SEE ME \r{CLI.CLEAR_LINE}Line clear test. Should see nothing after me.")
+print((f"{' ' * 46}SHOULDN'T SEE ME \r{CLI.CLEAR_LINE}Line clear test."
+       f" Should see nothing after me."))
 
 # Test 8/16 colors
 print()
@@ -84,9 +85,9 @@ for i in [16, 22, 28, 34, 40, 46]:
 for i in reversed([16, 22, 28, 34, 40, 46]):
     print(CLI256.bg(i) + " ", end='')
 print(f"{CLI.RESET}")
-for i in range(16,22):
+for i in range(16, 22):
     print(CLI256.bg(i) + " ", end='')
-for i in range(21,15,-1):
+for i in range(21, 15, -1):
     print(CLI256.bg(i) + " ", end='')
 print(f"{CLI.RESET}")
 
@@ -102,7 +103,7 @@ print(f"{CLI.RESET}")
 print()
 line = ""
 for i in range(4096):
-    r,g,b = colorsys.hsv_to_rgb(i / 4096.0 * 0.85, 1.0, 1.0)
+    r, g, b = colorsys.hsv_to_rgb(i / 4096.0 * 0.85, 1.0, 1.0)
     line += CLIT.bg(int(r * 255), int(g * 255), int(b * 255)) + " "
     if i % 128 == 127:
         line += CLI.RESET + "\n"

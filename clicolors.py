@@ -1,10 +1,12 @@
 # Not all options supported in all terminals
 # When in doubt use CLI.RESET to reliably clear any modifications
 
-# Basic 8/16 colors and modifiers
-# https://misc.flogisoft.com/bash/tip_colors_and_formatting
-# https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
-class CLI: 
+
+class CLI:
+    # Basic 8/16 colors and modifiers
+    # https://misc.flogisoft.com/bash/tip_colors_and_formatting
+    # https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+
     @staticmethod
     def from_val(value: int) -> str:
         """
@@ -13,7 +15,7 @@ class CLI:
         return f"\033[{value}m"
 
 
-#region CLI Names
+# region CLI Names
 # Resets everything
 CLI.RESET = '\033[0m'
 
@@ -24,7 +26,8 @@ CLI.BLINK = '\033[5m'
 CLI.REVERSE = '\033[7m'
 CLI.HIDDEN = '\033[8m'
 CLI.RESET_DARK = '\033[22m'
-#CLI.RESET_BOLD = '\033[21m'
+# CLI.RESET_BOLD = '\033[21m'
+
 # Not very well documented anywhere
 # Curl ran into the same issue once https://github.com/curl/curl/issues/2736
 # For most cases just use RESET
@@ -76,7 +79,8 @@ CLI.CLEAR_LINE = '\033[K'
 CLI.CLEAR = '\033[2J'
 CLI.SAVE = '\033[s'
 CLI.RESTORE = '\033[u'
-#endregion
+# endregion
+
 
 # 256 Colors
 class CLI256:
@@ -102,11 +106,11 @@ class CLI256:
 
         if r == g and g == b:
             if r < 8:
-                ansii_val =  16
+                ansii_val = 16
             elif r > 248:
-                ansii_val =  231
+                ansii_val = 231
             else:
-                ansii_val =  round(((r - 8) / 247) * 24) + 232
+                ansii_val = round(((r - 8) / 247) * 24) + 232
         else:
             ansii_val = 16 \
                 + (36 * round(r / 255 * 5)) \
@@ -114,8 +118,9 @@ class CLI256:
                 + round(b / 255 * 5)
         return f"\033[38;5;{ansii_val}m"
 
+
 # Uses names from https://jonasjacek.github.io/colors/
-#region CLI256 Names
+# region CLI256 Names
 CLI256.Black = '\033[38;5;0m'
 CLI256.Maroon = '\033[38;5;1m'
 CLI256.Green = '\033[38;5;2m'
@@ -629,20 +634,21 @@ CLI256.BG_Grey82 = '\033[48;5;252m'
 CLI256.BG_Grey85 = '\033[48;5;253m'
 CLI256.BG_Grey89 = '\033[48;5;254m'
 CLI256.BG_Grey93 = '\033[48;5;255m'
-#endregion
+# endregion
+
 
 # Truecolor
 # https://gist.github.com/XVilka/8346728
 class CLIT:
     @staticmethod
-    def fg(r: int, g:int, b:int) -> str:
+    def fg(r: int, g: int, b: int) -> str:
         """
         Returns the foreground escape code for an rgb truecolor.
         """
         return f"\033[38;2;{r};{g};{b}m"
 
     @staticmethod
-    def bg(r: int, g:int, b:int) -> str:
+    def bg(r: int, g: int, b: int) -> str:
         """
         Returns the background escape code for an rgb truecolor.
         """
