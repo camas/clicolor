@@ -6,7 +6,7 @@ Quick python reference for terminal color escape codes
 
 Install options:
 
-- Install the package
+- Install the package `clicolor`
 
 - Add as a submodule
 
@@ -16,7 +16,7 @@ git submodule add https://github.com/camas/clicolors
 
 - Or just copy `cli.py` and `LICENSE` somewhere
 
-Then `from clicolors.cli import CLI, ...`
+Then `from clicolor.cli import CLI, ...`
 
 ## Examples
 
