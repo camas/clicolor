@@ -1,11 +1,15 @@
 import setuptools
+import os.path
 
-with open("readme.md", "r") as fh:
-    long_description = fh.read()
+if os.path.exists('readme.md'):
+    with open('readme.md', 'r') as fh:
+        long_description = fh.read()
+else:
+    long_description = "Quick python reference for terminal color escape codes"
 
 setuptools.setup(
     name="clicolor",
-    version="1.0.1",
+    version="1.0.2",
     author="Camas",
     description="Quick python reference for terminal color escape codes",
     long_description=long_description,
