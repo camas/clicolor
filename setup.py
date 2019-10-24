@@ -5,7 +5,7 @@ with open("readme.md", "r") as fh:
 
 setuptools.setup(
     name="clicolor",
-    version="1.0",
+    version="1.0.1",
     author="Camas",
     description="Quick python reference for terminal color escape codes",
     long_description=long_description,
