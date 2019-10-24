@@ -2,7 +2,7 @@
 
 import colorsys
 
-from clicolors.cli import CLI, CLI256, CLIT
+from clicolor.cli import CLI, CLI256, CLIT
 
 # Test modifiers
 print()
