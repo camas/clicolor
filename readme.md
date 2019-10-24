@@ -4,15 +4,19 @@ Quick python reference for terminal color escape codes
 
 ## Usage
 
-- Copy `clicolors.py` to wherever
-- Copy `LICENSE`  or it's contents somewhere
-- `from clicolors import CLI, CLI256, CLIT`
+Install options:
 
-Can also add as a submodule
+- Install the package
+
+- Add as a submodule
 
 ```python
 git submodule add https://github.com/camas/clicolors
 ```
+
+- Or just copy `cli.py` and `LICENSE` somewhere
+
+Then `from clicolors.cli import CLI, ...`
 
 ## Examples
 
