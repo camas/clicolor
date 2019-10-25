@@ -1,6 +1,8 @@
 language: python
-install: true
-script: true
+install:
+  - pip install flake8
+script: 
+  - flake8 --count
 deploy:
   provider: pypi
   user: "__token__"
