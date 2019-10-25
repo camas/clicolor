@@ -1,0 +1,10 @@
+language: python
+install: true
+script: true
+deploy:
+  provider: pypi
+  user: "__token__"
+  password:
+    secure: "HQX1RA6Su5qwXXlFeVR9Y9g8LsBFPlK6yWSvuoX/RdAYB9O1gFfKQgp3F8OhlXCA3zJkPIjt6xn8YFXWZhEWp35m2hUVpFLlyo1EYrsVpnnmPZP9IqMpnlKEhgGZuGEdMIvbYmsqBzkQswIfLroyCqMOpzEQVwEBxv8uBqbgJovJUS0XgSTAUJndW7YtNmrcfVcu++5VMkyzyTgV23OCWMvUoKrE/1/i/zgfGwAPzEZcjldlv2XJ4swxyZKfBD0wRtT01hpqzxfxI0n+n8SXr6VkFRrGVLV4ba3/73FUd1aoczh6/tZsYjJFrmwHCILQLEuA59CLlzJOz6F84O5w2g5VCFLkM+pG2251cBqpnDW6t2TKChDY2ufzU4RSADK+9V2kVdOGnLysydTWODOhrPibSUVi4a2pHpsFHP0E/oflr1VWksoouMYaxLbe/HgAZ72xWEed/L5qJcPwDf35yk1dNOXMMTSWYC/mv+djyumcYoVZF5rb5IclMmdjMdTNnKBU833KJr4HFaicw9Xyc7SswKbElEY1cEkOH4rYiU07Z8Bc/HzRugs1uAx2OyYyYKOVT/0F5Ch9/yHKHjFGTYdkVVVNphqS4AI6fszq5Cu43mghrl1fpyQbxYndSkSJpOrPkbn2/bC2F5famyeBInipgQFjQulb0XZmD0gt+rA="
+  on:
+    tags: true
