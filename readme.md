@@ -11,7 +11,7 @@ Install options:
 - Add as a submodule
 
 ```python
-git submodule add https://github.com/camas/clicolors
+git submodule add https://github.com/camas/clicolor
 ```
 
 - Or just copy `cli.py` and `LICENSE` somewhere
