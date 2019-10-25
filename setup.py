@@ -7,6 +7,7 @@ setuptools.setup(
     name="clicolor",
     version_config=True,
     author="Camas",
+    author_email="camas@hotmail.co.uk",
     description="Quick python reference for terminal color escape codes",
     long_description=long_description,
     long_description_content_type="text/markdown",
