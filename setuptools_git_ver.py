@@ -45,8 +45,8 @@ def _get_command_output(command):
 def get_tag():
     """Return the last tag for the git repository reachable from HEAD."""
     # another possible option is: 'git tag --merged | sort -V | tail -n1'
-    return _get_command_output(("git tag --sort=version:refname --merged | "
-                                "tail -n1"))
+    tags = _get_command_output(("git tag --sort=committerdate --merged"))
+    return tags.splitlines()[-1]
 
 
 def get_tag_commit_sha(tag):
