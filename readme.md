@@ -1,5 +1,8 @@
 # clicolor
 
+[![PyPI version](https://badge.fury.io/py/clicolor.svg)](https://badge.fury.io/py/clicolor)
+[![Build Status](https://travis-ci.org/camas/clicolor.svg?branch=master)](https://travis-ci.org/camas/clicolor)
+
 Quick python reference for terminal color escape codes
 
 ## Usage
