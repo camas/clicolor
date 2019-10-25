@@ -1,12 +1,11 @@
 import setuptools
-import setuptools_git_ver
 
 with open('readme.md', 'r') as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="clicolor",
-    version=setuptools_git_ver.get_version("{tag}.dev+git.{sha}"),
+    version_config=True,
     author="Camas",
     description="Quick python reference for terminal color escape codes",
     long_description=long_description,
@@ -19,4 +18,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    setup_requires=['setuptools-git-ver'],
 )
