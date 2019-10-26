@@ -5,11 +5,21 @@ install:
   - pip install flake8
 script: 
   - flake8 --count
+before_deploy: "python setup.py sdist bdist_wheel"
 deploy:
-  provider: pypi
-  user: "__token__"
-  password:
-    secure: "HQX1RA6Su5qwXXlFeVR9Y9g8LsBFPlK6yWSvuoX/RdAYB9O1gFfKQgp3F8OhlXCA3zJkPIjt6xn8YFXWZhEWp35m2hUVpFLlyo1EYrsVpnnmPZP9IqMpnlKEhgGZuGEdMIvbYmsqBzkQswIfLroyCqMOpzEQVwEBxv8uBqbgJovJUS0XgSTAUJndW7YtNmrcfVcu++5VMkyzyTgV23OCWMvUoKrE/1/i/zgfGwAPzEZcjldlv2XJ4swxyZKfBD0wRtT01hpqzxfxI0n+n8SXr6VkFRrGVLV4ba3/73FUd1aoczh6/tZsYjJFrmwHCILQLEuA59CLlzJOz6F84O5w2g5VCFLkM+pG2251cBqpnDW6t2TKChDY2ufzU4RSADK+9V2kVdOGnLysydTWODOhrPibSUVi4a2pHpsFHP0E/oflr1VWksoouMYaxLbe/HgAZ72xWEed/L5qJcPwDf35yk1dNOXMMTSWYC/mv+djyumcYoVZF5rb5IclMmdjMdTNnKBU833KJr4HFaicw9Xyc7SswKbElEY1cEkOH4rYiU07Z8Bc/HzRugs1uAx2OyYyYKOVT/0F5Ch9/yHKHjFGTYdkVVVNphqS4AI6fszq5Cu43mghrl1fpyQbxYndSkSJpOrPkbn2/bC2F5famyeBInipgQFjQulb0XZmD0gt+rA="
-  on:
-    tags: true
-  distributions: "sdist bdist_wheel"
+  - provider: pypi
+    user: "__token__"
+    password:
+      secure: "HQX1RA6Su5qwXXlFeVR9Y9g8LsBFPlK6yWSvuoX/RdAYB9O1gFfKQgp3F8OhlXCA3zJkPIjt6xn8YFXWZhEWp35m2hUVpFLlyo1EYrsVpnnmPZP9IqMpnlKEhgGZuGEdMIvbYmsqBzkQswIfLroyCqMOpzEQVwEBxv8uBqbgJovJUS0XgSTAUJndW7YtNmrcfVcu++5VMkyzyTgV23OCWMvUoKrE/1/i/zgfGwAPzEZcjldlv2XJ4swxyZKfBD0wRtT01hpqzxfxI0n+n8SXr6VkFRrGVLV4ba3/73FUd1aoczh6/tZsYjJFrmwHCILQLEuA59CLlzJOz6F84O5w2g5VCFLkM+pG2251cBqpnDW6t2TKChDY2ufzU4RSADK+9V2kVdOGnLysydTWODOhrPibSUVi4a2pHpsFHP0E/oflr1VWksoouMYaxLbe/HgAZ72xWEed/L5qJcPwDf35yk1dNOXMMTSWYC/mv+djyumcYoVZF5rb5IclMmdjMdTNnKBU833KJr4HFaicw9Xyc7SswKbElEY1cEkOH4rYiU07Z8Bc/HzRugs1uAx2OyYyYKOVT/0F5Ch9/yHKHjFGTYdkVVVNphqS4AI6fszq5Cu43mghrl1fpyQbxYndSkSJpOrPkbn2/bC2F5famyeBInipgQFjQulb0XZmD0gt+rA="
+    on:
+      tags: true
+    distributions: "sdist bdist_wheel"
+  - provider: releases
+    api_key:
+      secure: "QuH5WXrmNtbsLHtTwMz10tD+YlItKv16Gs1AsDsjAy2fVTufUarI6/HEtPm73N+xIXTScPgIEr1QLvAnGwAoYxm+i5KLuXasy0JCYFeKXXkE1oO77nCDHP9s2vN9/ptU14qDDG3TaE/FDSGa/83KNgCkpaDPHZaz5++peMYEReB1FQXHrueTBvwiFMNMSrFVGZvo3EuMbz9SwD0vJklNIAkrbaea/wRSktT3zX544/6eMt3j9Ntp7pJJ6gB/XJtHltgnvNT9p8SuSLfgRFEuS7jUDfbakvvAT9a5yvGwi8R6qhewq5vM8f8KiB6QmiHduQADFgQJ73XXfOqWFbwKz8H4V3LJDloSsEPfgXhlfT6LL6C2ZMcJ3PDPeXSgvX9xPo9ZYEr/t+eHr+ljI9tj/hlSm1AMMTJbrg8WUExWUQQj41F7azbhFQTSs4ZGAc8HXYp4XO4Y32ZuucyruF+EmnZDvbiLscHzLSuglGB5R9zpa+Dvs/RmBVbTZguVdtmAQRvFhjsgzTjWC774pvHMr/IlM+EqnjPV2lLMc58QCJmuadr923stxXpCobIu/Sf5QC75q8nesKPyZiGknCIEGfASOvYsNShxASFq0e6SkOLk4FpFbT1E6hZultxA64tSeDEhpzZTE6USJvHeF1ig8ZPRx0coqZStwj7fD9D5xEE="
+    file_glob: true
+    file: dist/*
+    skip_cleanup: true
+    on:
+      tags: true
+
